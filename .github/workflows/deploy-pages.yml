@@ -35,7 +35,7 @@ jobs:
       - name: Upload static site artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: Interface
+          path: .
 
       - name: Deploy to GitHub Pages
         id: deployment
