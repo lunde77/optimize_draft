@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Draft Optimizer</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero__content">
+        <p class="badge">Free starter webpage</p>
+        <h1>Fantasy Draft Optimizer</h1>
+        <p>
+          A clean web interface for your draft model. This version is intentionally simple so you can
+          connect your optimizer logic later.
+        </p>
+        <a class="btn" href="#planner">Start planning</a>
+      </div>
+    </header>
+
+    <main>
+      <section id="planner" class="card">
+        <h2>Draft setup</h2>
+        <p class="section-note">Update these inputs in the browser. Backend connection can be added later.</p>
+
+        <form id="draft-form" class="grid">
+          <label>
+            League name
+            <input type="text" id="league" placeholder="Sunday League" required />
+          </label>
+
+          <label>
+            Team count
+            <input type="number" id="teams" min="2" max="20" value="12" />
+          </label>
+
+          <label>
+            Draft rounds
+            <input type="number" id="rounds" min="1" max="25" value="13" />
+          </label>
+
+          <label>
+            Scoring format
+            <select id="format">
+              <option value="ppr">PPR</option>
+              <option value="half-ppr">Half PPR</option>
+              <option value="standard">Standard</option>
+            </select>
+          </label>
+
+          <button class="btn" type="submit">Generate local plan</button>
+        </form>
+      </section>
+
+      <section class="card" id="results">
+        <h2>Plan preview</h2>
+        <p id="summary" class="muted">No plan created yet.</p>
+        <ol id="suggested-rounds" class="round-list"></ol>
+        <h3>Payload JSON</h3>
+        <pre id="payload-json" class="json-block">No payload generated yet.</pre>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        Free deployment options: <strong>GitHub Pages</strong>, <strong>Cloudflare Pages</strong>, or
+        <strong>Netlify</strong> (free tiers).
+      </p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
