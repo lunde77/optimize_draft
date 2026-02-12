@@ -109,6 +109,17 @@ footer {
   line-height: 1.7;
 }
 
+.json-block {
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  border-radius: 10px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: #0b1220;
+  color: #bfdbfe;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
 footer {
   padding: 1rem;
   text-align: center;
