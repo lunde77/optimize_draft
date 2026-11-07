@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Årets priser · Resultater</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="theme-color" content="#0f4f34" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <header class="hoved">
+      <div class="indre">
+        <p class="hoved__overline">Prisuddeling · Resultater</p>
+        <h1>Årets priser</h1>
+        <p class="hoved__intro">Samlet resultat for alle fire kategorier. Siden opdaterer sig selv, så længe den er åben.</p>
+      </div>
+    </header>
+
+    <main class="indre">
+      <section id="noegle-sektion" class="panel" hidden>
+        <h2>Indtast resultatnøglen</h2>
+        <p id="noegle-hjaelp">Resultaterne er beskyttet med en nøgle. Brug det fulde resultatlink, eller indsæt nøglen her.</p>
+        <form id="noegle-form" class="noegle-form">
+          <label for="noegle-felt">Resultatnøgle</label>
+          <input id="noegle-felt" name="noegle" autocomplete="off" spellcheck="false" required />
+          <button class="knap knap--primaer" type="submit">Vis resultater</button>
+        </form>
+      </section>
+
+      <section id="resultat-sektion" hidden>
+        <div class="overblik">
+          <div class="overblik__tal">
+            <span>Afgivne stemmer</span>
+            <strong id="antal">–</strong>
+            <small id="opdateret" aria-live="polite">Henter …</small>
+          </div>
+          <div class="overblik__handlinger">
+            <label class="skifter" for="skjul">
+              <input type="checkbox" id="skjul" />
+              Skjul indtil afsløring
+            </label>
+            <button type="button" class="knap knap--sekundaer" id="opdater">Opdatér nu</button>
+          </div>
+        </div>
+        <p class="fejlbesked" id="hent-fejl" role="alert" hidden></p>
+        <div class="resultat-gitter" id="gitter"></div>
+      </section>
+    </main>
+
+    <script type="module" src="/resultater.js"></script>
+  </body>
+</html>

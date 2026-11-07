@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Årets priser · Stem</title>
+    <meta name="description" content="Anonym afstemning: Årets spiller, Årets fighter, Årets udvikler og Årets bidragsyder." />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#0f4f34" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <header class="hoved">
+      <div class="indre">
+        <p class="hoved__overline">Prisuddeling · Afstemning</p>
+        <h1>Hvem skal hædres i år?</h1>
+        <p class="hoved__intro">
+          Vælg én kandidat i hver af de fire kategorier, og send din stemme nederst på siden.
+          Du stemmer anonymt, og du kan kun stemme én gang.
+        </p>
+      </div>
+    </header>
+
+    <main>
+      <div class="indre">
+        <details class="note">
+          <summary>
+            <svg class="note__ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z" />
+              <path d="M9 12l2 2 4-4" />
+            </svg>
+            Hvor anonym er min stemme?
+          </summary>
+          <div class="note__tekst">
+            <p>Vi gemmer kun dine fire valg og et tilfældigt nummer. Vi gemmer ikke dit navn, din e-mail, din IP-adresse eller andet, der kan pege på dig.</p>
+            <ul>
+              <li>Resultatet viser kun antal stemmer pr. kandidat – aldrig hvem der har stemt hvad.</li>
+              <li>For at undgå dobbeltstemmer husker din browser, at du har stemt. Det er en simpel beskyttelse: den kan omgås med en anden browser eller et privat vindue, så vi stoler på, at alle kun stemmer én gang.</li>
+              <li>Som på alle hjemmesider registrerer hostingudbyderen (Vercel) tekniske data som tidspunkt og IP-adresse i sine egne logs. Logs og stemmer er adskilt, men fuldstændig anonymitet kan ingen hjemmeside love.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <section id="lukket" class="indre" hidden>
+        <div class="panel">
+          <div class="panel__ikon panel__ikon--neutral" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2" /><path d="M8 11V7a4 4 0 0 1 8 0v4" /></svg>
+          </div>
+          <h2>Afstemningen er lukket</h2>
+          <p>Der kan ikke længere afgives stemmer. Resultatet bliver offentliggjort ved prisuddelingen.</p>
+        </div>
+      </section>
+
+      <section id="allerede" class="indre" hidden>
+        <div class="panel">
+          <div class="panel__ikon panel__ikon--neutral" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
+          </div>
+          <h2>Du har allerede stemt</h2>
+          <p>Der er afgivet en stemme fra denne browser. Hver deltager kan stemme én gang. Resultatet bliver offentliggjort ved prisuddelingen.</p>
+        </div>
+      </section>
+
+      <section id="tak" class="indre" hidden tabindex="-1" aria-labelledby="tak-titel">
+        <div class="panel">
+          <div class="panel__ikon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
+          </div>
+          <h2 id="tak-titel">Tak for din stemme!</h2>
+          <p>Din stemme er gemt anonymt. Resultatet bliver offentliggjort ved prisuddelingen.</p>
+          <dl class="opsummering" id="tak-opsummering"></dl>
+        </div>
+      </section>
+
+      <form id="stemmeseddel" novalidate>
+        <div class="indre seddel" id="kategorier"></div>
+
+        <div class="bjaelke">
+          <div class="indre">
+            <div class="fremskridt">
+              <ol class="prikker" id="prikker" aria-hidden="true"></ol>
+              <span class="fremskridt__tekst" id="fremskridt" aria-live="polite"><strong>0 af 4</strong> kategorier valgt</span>
+            </div>
+            <button type="submit" class="knap knap--primaer knap--ufaerdig" id="afgiv">Afgiv stemme</button>
+          </div>
+        </div>
+      </form>
+
+      <dialog id="bekraeft" aria-labelledby="bekraeft-titel">
+        <div class="dialog__indhold">
+          <h2 id="bekraeft-titel">Bekræft din stemme</h2>
+          <p>Tjek dine valg. Du kan ikke ændre stemmen, når den er sendt.</p>
+          <dl class="opsummering" id="bekraeft-opsummering"></dl>
+          <p class="fejlbesked" id="send-fejl" role="alert" hidden></p>
+          <div class="knapper">
+            <button type="button" class="knap knap--sekundaer" id="ret">Ret mine valg</button>
+            <button type="button" class="knap knap--primaer" id="send">Send stemme</button>
+          </div>
+        </div>
+      </dialog>
+    </main>
+
+    <noscript>
+      <div class="indre"><p class="fejlbesked">Afstemningen kræver JavaScript. Slå det til i din browser, og prøv igen.</p></div>
+    </noscript>
+
+    <script type="module" src="/stem.js"></script>
+  </body>
+</html>

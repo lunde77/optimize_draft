@@ -1,0 +1,16 @@
+{
+  "name": "prisuddeling-afstemning",
+  "private": true,
+  "type": "module",
+  "description": "Anonym afstemning til prisuddelingen (Vercel + Vercel Blob).",
+  "scripts": {
+    "dev": "node test/server.mjs",
+    "test": "node --test test/api.test.mjs"
+  },
+  "dependencies": {
+    "@vercel/blob": "2.8.2"
+  },
+  "engines": {
+    "node": "22.x"
+  }
+}
