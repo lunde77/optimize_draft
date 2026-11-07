@@ -10,7 +10,7 @@ const tidFormat = new Intl.DateTimeFormat('da-DK', { hour: '2-digit', minute: '2
 // Nøglen ligger efter # i linket, så den aldrig sendes med i adressen til serveren.
 const params = new URLSearchParams(location.search);
 const test = params.get('test') === '1';
-let noegle = laesHash();
+let noegle = laesHash() || flytNoegleFraAdresse();
 let seneste = null;
 let timer = null;
 const afsloeret = new Set();
@@ -21,6 +21,17 @@ function laesHash() {
   } catch {
     return location.hash.slice(1).trim();
   }
+}
+
+// Nogle apps fjerner delen efter # i links. Derfor virker ?noegle=... også;
+// nøglen flyttes straks tilbage efter #, så den ikke bliver stående i adressen.
+function flytNoegleFraAdresse() {
+  const fraAdresse = (params.get('noegle') || '').trim();
+  if (!fraAdresse) return '';
+  params.delete('noegle');
+  const rest = params.toString();
+  history.replaceState(null, '', `${location.pathname}${rest ? `?${rest}` : ''}#${encodeURIComponent(fraAdresse)}`);
+  return fraAdresse;
 }
 
 function lavElement(tag, klasse, tekst) {

@@ -3,7 +3,7 @@
 Én samlet stemmeside med fire kategorier (Årets spiller, Årets fighter, Årets udvikler og Årets bidragsyder) og 22 kandidater i hver.
 
 - **Stemmeside:** `https://prisuddeling-afstemning.vercel.app/`
-- **Resultatside:** `https://prisuddeling-afstemning.vercel.app/resultater#<resultatnøgle>`
+- **Resultatside:** `https://prisuddeling-afstemning.vercel.app/resultater?noegle=<resultatnøgle>` (eller `/resultater#<resultatnøgle>`)
 
 Resultatnøglen ligger som miljøvariablen `RESULTAT_NOEGLE` i Vercel-projektet *prisuddeling-afstemning* (Settings → Environment Variables).
 
